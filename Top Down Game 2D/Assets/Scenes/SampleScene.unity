@@ -3852,8 +3852,8 @@ GameObject:
   - component: {fileID: 636682285}
   - component: {fileID: 636682289}
   - component: {fileID: 636682288}
-  - component: {fileID: 636682287}
   - component: {fileID: 636682290}
+  - component: {fileID: 636682287}
   - component: {fileID: 636682291}
   m_Layer: 0
   m_Name: Player
@@ -3940,6 +3940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  runSpeed: 8
 --- !u!50 &636682288
 Rigidbody2D:
   serializedVersion: 4
