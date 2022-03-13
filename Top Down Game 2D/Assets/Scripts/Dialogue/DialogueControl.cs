@@ -5,6 +5,16 @@ using UnityEngine.UI;
 
 public class DialogueControl : MonoBehaviour
 {
+    [System.Serializable]
+    public enum idiom
+    {
+        pt,
+        eng,
+        spa
+    }
+
+    public idiom language;
+
     [Header("Components")]
     public GameObject dialogueObj; //janela do dialogo
     public Image profileSprite;
@@ -46,7 +56,23 @@ public class DialogueControl : MonoBehaviour
 
     public void NextSentence()
     {
-
+        if(speechText.text == sentences[index])//frase completa ?
+        {
+            if(index < sentences.Length - 1)//terminou todas as frase ?
+            {
+                index++;
+                speechText.text = "";
+                StartCoroutine(TypeSentence());
+            }
+            else // terminou
+            {
+                speechText.text = "";
+                index = 0;
+                dialogueObj.SetActive(false);
+                sentences = null;
+                isShowing = false;
+            }
+        }
     }
 
     public void Speech(string[] txt)
