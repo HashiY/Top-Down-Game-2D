@@ -16,9 +16,15 @@ MonoBehaviour:
   speakerSprite: {fileID: 0}
   sentence: 
   dialogues:
-  - actorName: 
+  - actorName: "Mo\xE7a"
     profile: {fileID: 2031753151691111046, guid: 5848ced0f006f834e8c0a1b57870e463, type: 3}
     sentence:
-      portuguese: "Ol\xE1, Mundo"
+      portuguese: "Ol\xE1, forasteiro! Tudo bem com voc\xEA?"
+      english: Hello
+      spanish: Hola
+  - actorName: "Her\xF3i"
+    profile: {fileID: 2203037612859406267, guid: 5848ced0f006f834e8c0a1b57870e463, type: 3}
+    sentence:
+      portuguese: Tudo bem?
       english: 
       spanish: 
