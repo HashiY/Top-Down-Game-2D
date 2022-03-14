@@ -66,13 +66,18 @@ public class DialogueControl : MonoBehaviour
             }
             else // terminou
             {
-                speechText.text = "";
-                index = 0;
-                dialogueObj.SetActive(false);
-                sentences = null;
-                isShowing = false;
+                EndSentence();
             }
         }
+    }
+
+    public void EndSentence()
+    {
+        speechText.text = "";
+        index = 0;
+        dialogueObj.SetActive(false);
+        sentences = null;
+        isShowing = false;
     }
 
     public void Speech(string[] txt)
