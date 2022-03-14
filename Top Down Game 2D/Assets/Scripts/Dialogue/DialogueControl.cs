@@ -24,7 +24,7 @@ public class DialogueControl : MonoBehaviour
     [Header("Settings")]
     public float typingSpeed;
 
-    private bool isShowing; //se a janela esta visivel
+    public bool isShowing; //se a janela esta visivel
     private int index;
     private string[] sentences;
 
