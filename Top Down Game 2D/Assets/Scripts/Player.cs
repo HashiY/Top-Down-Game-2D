@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     private bool _isRunning;
     private bool _isRolling;
     private bool _isCutting;
+    private bool _isDigging;
     private Vector2 _direction;
+    private int handlingObj;
 
     public Vector2 direction
     {
@@ -39,6 +41,12 @@ public class Player : MonoBehaviour
         set { _isCutting = value; }
     }
 
+    public bool isDigging
+    {
+        get { return _isDigging; }
+        set { _isDigging = value; }
+    }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -46,10 +54,21 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingObj = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handlingObj = 1;
+        }
+
+
         OnInput();
         OnRun();
         OnRolling();
         OnCutting();
+        OnDig();
     }
 
     private void FixedUpdate() //coloca oq tem fisica
@@ -59,19 +78,40 @@ public class Player : MonoBehaviour
 
     #region Movement
 
-    void OnCutting()
+    void OnDig()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(handlingObj == 1)
         {
-            _isCutting = true;
-            speed = 0f;
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            _isCutting = false;
-            speed = initialSpeed;
+            if (Input.GetMouseButtonDown(0))
+            {
+                _isDigging = true;
+                speed = 0f;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isDigging = false;
+                speed = initialSpeed;
+            }
         }
     }
+
+    void OnCutting()
+    {
+        if (handlingObj == 0)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _isCutting = true;
+                speed = 0f;
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                _isCutting = false;
+                speed = initialSpeed;
+            }
+        }
+    }
+
     void OnInput()
     {
         _direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
